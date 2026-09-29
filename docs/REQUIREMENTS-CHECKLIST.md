@@ -5,13 +5,13 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
 
 ## Title and context
 
-- [ ] R01 "Time Deposit Refactoring Kata - Take-Home Assignment"
+- [x] R01 (7aef83b) "Time Deposit Refactoring Kata - Take-Home Assignment"
   -> It is a REFACTORING kata. Existing code is the starting point, not a rewrite from scratch. Keep package, class names and structure recognisable.
-- [ ] R02 "XA Bank Time Deposit"
+- [x] R02 (7aef83b) "XA Bank Time Deposit"
   -> Banking domain: money handling, so precision and rounding matter and must not drift from today.
-- [ ] R03 "A junior developer implemented domain logic for a time deposit system but did not complete the API functionality."
+- [x] R03 (0ddaba5) "A junior developer implemented domain logic for a time deposit system but did not complete the API functionality."
   -> Domain logic exists and is authoritative. What is missing is the API layer and persistence. Our job is completing, not replacing.
-- [ ] R04 "Your task is to refactor the existing codebase to implement all required functionalities based on the provided business requirements, ensuring no breaking changes occur."
+- [x] R04 (0ddaba5) "Your task is to refactor the existing codebase to implement all required functionalities based on the provided business requirements, ensuring no breaking changes occur."
   -> Three obligations: refactor (improve structure), implement ALL listed functionality, and zero breaking changes. All three are graded.
 
 ## 1. API endpoints
@@ -36,7 +36,7 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
 
 ## 3. Interest calculation
 
-- [ ] R12 "Implement logic to calculate monthly interest based on the plan type:"
+- [x] R12 (7aef83b) "Implement logic to calculate monthly interest based on the plan type:"
   -> Monthly = yearly rate divided by 12, as the existing code does. Plan type is the dispatch key, so the design should make plan type a first-class concept.
 - [x] R13 (d50f457) "Basic Plan: 1% interest"
   -> 0.01 / 12 of balance per update. Existing code matches.
@@ -61,15 +61,15 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
 
 ## 6. AI-assisted development
 
-- [ ] R20 "Set up an AI harness or agent workflow and use it throughout the development for this take-home exercise."
+- [x] R20 (94e8490) "Set up an AI harness or agent workflow and use it throughout the development for this take-home exercise."
   -> Claude Code with a committed project config, used from the first commit to the last. Evidence should be visible in the repo.
-- [ ] R21 "Briefly document the tools and setup used (e.g., LLMs, coding assistants, agentic frameworks, configuration)."
+- [x] R21 (94e8490) "Briefly document the tools and setup used (e.g., LLMs, coding assistants, agentic frameworks, configuration)."
   -> A short section in the README or a dedicated doc: model, CLI version, config files, how they are wired.
 - [x] R22 (21ef897) "Ensure your AI setup is practical and reproducible."
   -> Someone cloning the repo can run the same setup. Config lives in the repo.
 - [x] R23 (21ef897) "Include any custom rules, system prompts, or agent configurations used."
   -> Commit CLAUDE.md, rules and this checklist. Only the rules that shaped this solution, nothing external.
-- [ ] R24 "Include a brief summary of which parts of the solution were AI-assisted and why."
+- [x] R24 (94e8490) "Include a brief summary of which parts of the solution were AI-assisted and why."
   -> Honest per-area summary: what AI drafted, what was reviewed and changed by the developer, and the reason for using AI there.
 
 ## Important guidelines
@@ -86,7 +86,7 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
   -> All work stays in our fork. Never push to upstream.
 - [x] R30 (21ef897) "Instead, fork the repository into your own GitHub repository and develop the solution there."
   -> Fork, keep upstream history, commit on the fork.
-- [ ] R31 "Handling invalid input or exceptions is not required."
+- [x] R31 (0ddaba5) "Handling invalid input or exceptions is not required."
   -> Do not add validation or error handlers. Unknown plan type keeps earning zero interest silently, as today.
 - [x] R32 (93ef9d5) "Use any tools, frameworks, or libraries you find suitable."
   -> Free choice of stack, but each dependency should be justifiable.
@@ -99,11 +99,11 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
   -> An OpenAPI document is the API contract, checked in, and Swagger UI serves it. Contract-first preferred.
 - [x] R35 (0ddaba5) "Embrace Hexagonal Architecture."
   -> Domain and application core with no framework imports; ports as interfaces; REST inbound adapter and DB outbound adapter. Package layout must make this obvious.
-- [ ] R36 "Follow atomic commit practices."
+- [x] R36 (94e8490) "Follow atomic commit practices."
   -> One logical change per commit, each builds and passes tests, imperative message that names the README item it fulfils.
 - [x] R37 (5a51911) "Utilize testcontainers."
   -> DB integration tests run against a real database container, not H2.
-- [ ] R38 "Leverage AI-assisted development tools for code generation, testing, and refactoring."
+- [x] R38 (94e8490) "Leverage AI-assisted development tools for code generation, testing, and refactoring."
   -> Use AI in all three activities and say so in R24.
 
 ## Submission instructions
