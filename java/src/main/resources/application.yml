@@ -9,3 +9,9 @@ spring:
       # A2: the README's camelCase table and column names are kept exactly, so identifiers are quoted
       hibernate.globally_quoted_identifiers: true
       hibernate.physical_naming_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    url: /openapi.yaml
+    path: /swagger-ui.html
