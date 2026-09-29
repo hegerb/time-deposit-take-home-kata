@@ -108,7 +108,7 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
 
 ## Submission instructions
 
-- [ ] R39 "Provide clear instructions on how to trigger the endpoints using the Swagger contract."
+- [x] R39 (e084106) "Provide clear instructions on how to trigger the endpoints using the Swagger contract."
   -> README section: how to start the app and the DB, the Swagger UI URL, and how to call each endpoint from it.
 - [ ] R40 "Email the link to your public GitHub repository."
   -> Repo visibility public. Final sweep of this checklist before the email.
@@ -117,7 +117,7 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
 
 - [ ] E01 48 hours from receipt of the email.
 - [x] E02 (93ef9d5) Solution builds and runs on Java 17 (pom target); newer JDKs work too.
-- [ ] E03 Assumptions clearly stated when submitting (README section listing A1..A7 in addition to the code comments, R33).
+- [x] E03 (e084106) Assumptions clearly stated when submitting (README section listing A1..A7 in addition to the code comments, R33).
 
 ## Ambiguities to decide and document (R33)
 
