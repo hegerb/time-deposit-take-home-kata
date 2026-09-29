@@ -16,22 +16,22 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
 
 ## 1. API endpoints
 
-- [ ] R05 "Create a RESTful API endpoint to update the balances of all time deposits in the database."
+- [x] R05 (0ddaba5) "Create a RESTful API endpoint to update the balances of all time deposits in the database."
   -> One endpoint, RESTful, no parameters, operates on every row in the DB, persists the result. Uses the existing calculator.
-- [ ] R06 "Create a RESTful API endpoint to retrieve all time deposits."
+- [x] R06 (0ddaba5) "Create a RESTful API endpoint to retrieve all time deposits."
   -> One endpoint, GET, returns every deposit. No filtering, paging or get-by-id.
-- [ ] R07 "The GET endpoint should return a list of all time deposits with the following schema: id, planType, balance, days, withdrawals"
+- [x] R07 (0ddaba5) "The GET endpoint should return a list of all time deposits with the following schema: id, planType, balance, days, withdrawals"
   -> Response is a JSON array. Each item has exactly these five field names, spelled exactly like this. Withdrawals belong to the deposit, so they are loaded with it.
 
 ## 2. Database setup
 
-- [ ] R08 "Store all time deposit plans in a database."
+- [x] R08 (5a51911) "Store all time deposit plans in a database."
   -> A real database, not an in-memory list. The update endpoint reads from and writes to it.
-- [ ] R09 "Define the following tables:"
+- [x] R09 (3ff09a7) "Define the following tables:"
   -> Schema is defined by us, reproducibly (migration script), with exactly these two tables.
-- [ ] R10 "timeDeposits: id Integer (primary key), planType String (required), days Integer (required), balance Decimal (required)"
+- [x] R10 (3ff09a7) "timeDeposits: id Integer (primary key), planType String (required), days Integer (required), balance Decimal (required)"
   -> Table name and four columns as written. All NOT NULL. `balance` is a decimal column, even though the Java class uses Double. Naming case is an ambiguity (A2).
-- [ ] R11 "withdrawals: id Integer (primary key), timeDepositId Integer (foreign key, required), amount Decimal (required), date Date (required)"
+- [x] R11 (3ff09a7) "withdrawals: id Integer (primary key), timeDepositId Integer (foreign key, required), amount Decimal (required), date Date (required)"
   -> Table name and four columns as written. FK to timeDeposits, NOT NULL. `date` is a DATE, not a timestamp.
 
 ## 3. Interest calculation
@@ -78,30 +78,30 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
   -> Its current behaviour IS the spec, including boundaries and rounding. Where README wording is looser, the code wins.
 - [x] R26 (7aef83b) "Ensure its behavior remains unchanged after refactoring."
   -> Characterization tests written against the ORIGINAL code before touching it, kept green after every refactoring step.
-- [ ] R27 "The final solution must include exactly two API endpoints."
+- [x] R27 (60faa0e) "The final solution must include exactly two API endpoints."
   -> Count of routes in the OpenAPI contract is two. Swagger UI is documentation, not an API endpoint (assumption to state).
-- [ ] R28 "Do not develop additional endpoints."
+- [x] R28 (60faa0e) "Do not develop additional endpoints."
   -> No health check, no actuator, no get-by-id, no create, no delete, no seed endpoint.
-- [ ] R29 "Do not create a pull request or a new branch in the ikigai-digital repository."
+- [x] R29 (21ef897) "Do not create a pull request or a new branch in the ikigai-digital repository."
   -> All work stays in our fork. Never push to upstream.
-- [ ] R30 "Instead, fork the repository into your own GitHub repository and develop the solution there."
+- [x] R30 (21ef897) "Instead, fork the repository into your own GitHub repository and develop the solution there."
   -> Fork, keep upstream history, commit on the fork.
 - [ ] R31 "Handling invalid input or exceptions is not required."
   -> Do not add validation or error handlers. Unknown plan type keeps earning zero interest silently, as today.
-- [ ] R32 "Use any tools, frameworks, or libraries you find suitable."
+- [x] R32 (93ef9d5) "Use any tools, frameworks, or libraries you find suitable."
   -> Free choice of stack, but each dependency should be justifiable.
-- [ ] R33 "In case of ambiguity, make logical assumptions and justify them in code comments."
+- [x] R33 (cc4407a) "In case of ambiguity, make logical assumptions and justify them in code comments."
   -> Each ambiguity (A1..A7) gets a short WHY comment at the place where the assumption is made in code. This is the one place comments are explicitly required.
 
 ## Preferred stack
 
-- [ ] R34 "Use an OpenAPI Swagger contract."
+- [x] R34 (60faa0e) "Use an OpenAPI Swagger contract."
   -> An OpenAPI document is the API contract, checked in, and Swagger UI serves it. Contract-first preferred.
-- [ ] R35 "Embrace Hexagonal Architecture."
+- [x] R35 (0ddaba5) "Embrace Hexagonal Architecture."
   -> Domain and application core with no framework imports; ports as interfaces; REST inbound adapter and DB outbound adapter. Package layout must make this obvious.
 - [ ] R36 "Follow atomic commit practices."
   -> One logical change per commit, each builds and passes tests, imperative message that names the README item it fulfils.
-- [ ] R37 "Utilize testcontainers."
+- [x] R37 (5a51911) "Utilize testcontainers."
   -> DB integration tests run against a real database container, not H2.
 - [ ] R38 "Leverage AI-assisted development tools for code generation, testing, and refactoring."
   -> Use AI in all three activities and say so in R24.
@@ -116,7 +116,7 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
 ## Email (outside README, still binding)
 
 - [ ] E01 48 hours from receipt of the email.
-- [ ] E02 Solution builds and runs on Java 17 (pom target); newer JDKs work too.
+- [x] E02 (93ef9d5) Solution builds and runs on Java 17 (pom target); newer JDKs work too.
 - [ ] E03 Assumptions clearly stated when submitting (README section listing A1..A7 in addition to the code comments, R33).
 
 ## Ambiguities to decide and document (R33)

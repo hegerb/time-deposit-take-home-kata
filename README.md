@@ -1,5 +1,8 @@
 # Time Deposit Refactoring Kata - Take-Home Assignment
 
+> **Solution (Java):** see [`java/README.md`](java/README.md) for how to run it and trigger the endpoints, and [`docs/`](docs/) for the design, the README checklist and the AI-assisted development notes.
+
+
 ## XA Bank Time Deposit
 
 ### Context
