@@ -10,8 +10,6 @@ spring:
       hibernate.globally_quoted_identifiers: true
       hibernate.physical_naming_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 springdoc:
-  api-docs:
-    enabled: false
   swagger-ui:
+    # Swagger UI shows the checked-in contract, not a document generated from annotations
     url: /openapi.yaml
-    path: /swagger-ui.html
