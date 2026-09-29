@@ -1,3 +1,11 @@
 spring:
   application:
     name: time-deposit
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      # A2: the README's camelCase table and column names are kept exactly, so identifiers are quoted
+      hibernate.globally_quoted_identifiers: true
+      hibernate.physical_naming_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
