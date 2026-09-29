@@ -5,6 +5,7 @@ import org.ikigaidigital.TimeDeposit;
 import org.ikigaidigital.domain.model.PlanTypes;
 import org.ikigaidigital.domain.model.TimeDepositWithWithdrawals;
 import org.ikigaidigital.domain.model.Withdrawal;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -31,6 +32,12 @@ class TimeDepositPersistenceAdapterTest {
 
     @Autowired
     private TimeDepositPersistenceAdapter adapter;
+
+    @BeforeEach
+    void startFromAnEmptyDatabase() {
+        withdrawals.deleteAll();
+        timeDeposits.deleteAll();
+    }
 
     @Test
     void should_returnDepositsInIdOrderWithTheirWithdrawals_whenReadingAll() {
