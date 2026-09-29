@@ -25,6 +25,8 @@
 - Collections handed out are unmodifiable (`List.of`, `List.copyOf`, `stream().toList()`).
 - Streams for transformations, loops for side effects. Never a stream with a mutating lambda.
 - No static mutable state. No singletons by hand; Spring owns lifecycle in adapters only.
+- An interface declares a contract only: no constants, no helper statics. Shared arithmetic
+  or values become a small type with a domain name, never an interface member.
 - Parameters are not reassigned. Local variables are effectively final where possible.
 
 ## Money and arithmetic

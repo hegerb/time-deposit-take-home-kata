@@ -74,8 +74,8 @@ existing plans"), looks up the policy by plan type, and applies the same roundin
 A second constructor accepting the policy lookup is added for Spring wiring; adding a
 constructor is not a breaking change.
 
-Adding a future plan = one new `InterestPolicy` class registered in `InterestPolicies`.
-No existing class changes (open/closed).
+Adding a future plan = one new `InterestPolicy` class plus one line in `InterestPolicies.standard()`.
+No other existing class changes (open/closed for the calculation itself).
 
 Behaviour preservation, the details that can silently break R26:
 - Arithmetic order stays `balance * rate / 12` in `double`. Writing `balance * (rate / 12)`
@@ -117,6 +117,7 @@ ORIGINAL code before refactoring (commit 3), and stay green through every later 
 | A8 | Seed data | Flyway migration inserts a few deposits per plan type plus withdrawals | "Existing plans" (R16) implies data exists; endpoints show something on first run (R39). |
 | A9 | Existing placeholder test `assertThat(1).isEqualTo(1)` | Keep the file, replace the placeholder with the real expected balance in the characterization commit | Tests are not part of the protected API (R17); a meaningless assertion is dead code and would be left behind otherwise. |
 | A11 | Parameter name `xs` in the protected `updateBalance` | Rename to `timeDeposits` | Parameter names are not part of a Java method signature, so callers are unaffected (R17 holds); leaving `xs` would keep the unclear naming the kata asks to refactor. |
+| A12 | The 30-day grace period sits in the calculator, not in each policy | Keep it common | The README states it "for any existing plans"; a future plan with a different grace period is a README change first, and would then move the rule into the policies. |
 | A10 | Where the solution docs live | Root README gets a short "Solution" section on top linking to `java/README.md`; design and checklist in `docs/` | Assignment README stays intact; reviewer lands on root and finds the way in. |
 
 ## 7. Test strategy

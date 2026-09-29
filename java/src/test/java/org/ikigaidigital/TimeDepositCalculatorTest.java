@@ -23,18 +23,18 @@ class TimeDepositCalculatorTest {
 
     @Test
     void should_addOneMonthOfBasicInterest_whenBasicPlanIsOlderThanThirtyDays() {
-        TimeDeposit deposit = deposit(BASIC, 1234567.00, 45);
+        TimeDeposit timeDeposit = timeDeposit(BASIC, 1234567.00, 45);
 
-        calculator.updateBalance(List.of(deposit));
+        calculator.updateBalance(List.of(timeDeposit));
 
-        assertThat(deposit.getBalance()).isEqualTo(1235595.81);
+        assertThat(timeDeposit.getBalance()).isEqualTo(1235595.81);
     }
 
     @Test
     void should_addNoInterest_whenAnyPlanIsExactlyThirtyDaysOld() {
-        TimeDeposit basic = deposit(BASIC, 1000.00, 30);
-        TimeDeposit student = deposit(STUDENT, 1000.00, 30);
-        TimeDeposit premium = deposit(PREMIUM, 1000.00, 30);
+        TimeDeposit basic = timeDeposit(BASIC, 1000.00, 30);
+        TimeDeposit student = timeDeposit(STUDENT, 1000.00, 30);
+        TimeDeposit premium = timeDeposit(PREMIUM, 1000.00, 30);
 
         calculator.updateBalance(List.of(basic, student, premium));
 
@@ -45,73 +45,73 @@ class TimeDepositCalculatorTest {
 
     @Test
     void should_addBasicInterest_whenBasicPlanIsThirtyOneDaysOld() {
-        TimeDeposit deposit = deposit(BASIC, 1000.00, 31);
+        TimeDeposit timeDeposit = timeDeposit(BASIC, 1000.00, 31);
 
-        calculator.updateBalance(List.of(deposit));
+        calculator.updateBalance(List.of(timeDeposit));
 
-        assertThat(deposit.getBalance()).isEqualTo(1000.83);
+        assertThat(timeDeposit.getBalance()).isEqualTo(1000.83);
     }
 
     @Test
     void should_addStudentInterest_whenStudentPlanIsThirtyOneDaysOld() {
-        TimeDeposit deposit = deposit(STUDENT, 1000.00, 31);
+        TimeDeposit timeDeposit = timeDeposit(STUDENT, 1000.00, 31);
 
-        calculator.updateBalance(List.of(deposit));
+        calculator.updateBalance(List.of(timeDeposit));
 
-        assertThat(deposit.getBalance()).isEqualTo(1002.50);
+        assertThat(timeDeposit.getBalance()).isEqualTo(1002.50);
     }
 
     @Test
     void should_addStudentInterest_whenStudentPlanIsThreeHundredSixtyFiveDaysOld() {
-        TimeDeposit deposit = deposit(STUDENT, 1000.00, 365);
+        TimeDeposit timeDeposit = timeDeposit(STUDENT, 1000.00, 365);
 
-        calculator.updateBalance(List.of(deposit));
+        calculator.updateBalance(List.of(timeDeposit));
 
-        assertThat(deposit.getBalance()).isEqualTo(1002.50);
+        assertThat(timeDeposit.getBalance()).isEqualTo(1002.50);
     }
 
     @Test
     void should_addNoInterest_whenStudentPlanIsThreeHundredSixtySixDaysOld() {
-        TimeDeposit deposit = deposit(STUDENT, 1000.00, 366);
+        TimeDeposit timeDeposit = timeDeposit(STUDENT, 1000.00, 366);
 
-        calculator.updateBalance(List.of(deposit));
+        calculator.updateBalance(List.of(timeDeposit));
 
-        assertThat(deposit.getBalance()).isEqualTo(1000.00);
+        assertThat(timeDeposit.getBalance()).isEqualTo(1000.00);
     }
 
     @Test
     void should_addNoInterest_whenPremiumPlanIsFortyFiveDaysOld() {
-        TimeDeposit deposit = deposit(PREMIUM, 1000.00, 45);
+        TimeDeposit timeDeposit = timeDeposit(PREMIUM, 1000.00, 45);
 
-        calculator.updateBalance(List.of(deposit));
+        calculator.updateBalance(List.of(timeDeposit));
 
-        assertThat(deposit.getBalance()).isEqualTo(1000.00);
+        assertThat(timeDeposit.getBalance()).isEqualTo(1000.00);
     }
 
     @Test
     void should_addPremiumInterest_whenPremiumPlanIsFortySixDaysOld() {
-        TimeDeposit deposit = deposit(PREMIUM, 1000.00, 46);
+        TimeDeposit timeDeposit = timeDeposit(PREMIUM, 1000.00, 46);
 
-        calculator.updateBalance(List.of(deposit));
+        calculator.updateBalance(List.of(timeDeposit));
 
-        assertThat(deposit.getBalance()).isEqualTo(1004.17);
+        assertThat(timeDeposit.getBalance()).isEqualTo(1004.17);
     }
 
     @Test
     void should_addNoInterest_whenPlanTypeIsUnknown() {
-        TimeDeposit deposit = deposit(UNKNOWN_PLAN_TYPE, 1000.00, 100);
+        TimeDeposit timeDeposit = timeDeposit(UNKNOWN_PLAN_TYPE, 1000.00, 100);
 
-        calculator.updateBalance(List.of(deposit));
+        calculator.updateBalance(List.of(timeDeposit));
 
-        assertThat(deposit.getBalance()).isEqualTo(1000.00);
+        assertThat(timeDeposit.getBalance()).isEqualTo(1000.00);
     }
 
     @Test
     void should_roundHalfCentDown_whenDoubleProductFallsBelowHalfCent() {
         // 18.00 * 0.01 / 12 is 0.01499999... in double, so HALF_UP gives 0.01, not 0.02
-        TimeDeposit basicEighteen = deposit(BASIC, 18.00, 31);
-        TimeDeposit basicThirty = deposit(BASIC, 30.00, 31);
-        TimeDeposit studentTen = deposit(STUDENT, 10.00, 31);
+        TimeDeposit basicEighteen = timeDeposit(BASIC, 18.00, 31);
+        TimeDeposit basicThirty = timeDeposit(BASIC, 30.00, 31);
+        TimeDeposit studentTen = timeDeposit(STUDENT, 10.00, 31);
 
         calculator.updateBalance(List.of(basicEighteen, basicThirty, studentTen));
 
@@ -123,23 +123,23 @@ class TimeDepositCalculatorTest {
     @Test
     void should_roundHalfCentUp_whenDoubleProductLandsAboveHalfCent() {
         // 6.00 * 0.01 / 12 is 0.00500000000000000010 in double, so HALF_UP gives 0.01
-        TimeDeposit deposit = deposit(BASIC, 6.00, 31);
+        TimeDeposit timeDeposit = timeDeposit(BASIC, 6.00, 31);
 
-        calculator.updateBalance(List.of(deposit));
+        calculator.updateBalance(List.of(timeDeposit));
 
-        assertThat(deposit.getBalance()).isEqualTo(6.01);
+        assertThat(timeDeposit.getBalance()).isEqualTo(6.01);
     }
 
     @Test
     void should_updateEveryDepositInPlace_whenListHasSeveralPlans() {
-        TimeDeposit basic = deposit(BASIC, 1000.00, 31);
-        TimeDeposit student = deposit(STUDENT, 1000.00, 31);
-        TimeDeposit premium = deposit(PREMIUM, 1000.00, 46);
-        List<TimeDeposit> deposits = List.of(basic, student, premium);
+        TimeDeposit basic = timeDeposit(BASIC, 1000.00, 31);
+        TimeDeposit student = timeDeposit(STUDENT, 1000.00, 31);
+        TimeDeposit premium = timeDeposit(PREMIUM, 1000.00, 46);
+        List<TimeDeposit> timeDeposits = List.of(basic, student, premium);
 
-        calculator.updateBalance(deposits);
+        calculator.updateBalance(timeDeposits);
 
-        assertThat(deposits).containsExactly(basic, student, premium);
+        assertThat(timeDeposits).containsExactly(basic, student, premium);
         assertThat(basic.getBalance()).isEqualTo(1000.83);
         assertThat(student.getBalance()).isEqualTo(1002.50);
         assertThat(premium.getBalance()).isEqualTo(1004.17);
@@ -150,7 +150,7 @@ class TimeDepositCalculatorTest {
         assertThatCode(() -> calculator.updateBalance(List.of())).doesNotThrowAnyException();
     }
 
-    private static TimeDeposit deposit(String planType, double balance, int days) {
+    private static TimeDeposit timeDeposit(String planType, double balance, int days) {
         return new TimeDeposit(1, planType, balance, days);
     }
 }

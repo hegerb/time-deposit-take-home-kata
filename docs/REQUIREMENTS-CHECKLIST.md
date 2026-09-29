@@ -38,13 +38,13 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
 
 - [ ] R12 "Implement logic to calculate monthly interest based on the plan type:"
   -> Monthly = yearly rate divided by 12, as the existing code does. Plan type is the dispatch key, so the design should make plan type a first-class concept.
-- [ ] R13 "Basic Plan: 1% interest"
+- [x] R13 (d50f457) "Basic Plan: 1% interest"
   -> 0.01 / 12 of balance per update. Existing code matches.
-- [ ] R14 "Student Plan: 3% interest (no interest after 1 year)"
+- [x] R14 (d50f457) "Student Plan: 3% interest (no interest after 1 year)"
   -> 0.03 / 12, and nothing once past one year. Existing code: interest while `days < 366`. Keep that boundary exactly.
-- [ ] R15 "Premium Plan: 5% interest (interest starts after 45 days)"
+- [x] R15 (d50f457) "Premium Plan: 5% interest (interest starts after 45 days)"
   -> 0.05 / 12, only when `days > 45`. Existing code matches. Keep the boundary exactly.
-- [ ] R16 "No interest is applied for the first 30 days for any existing plans."
+- [x] R16 (d50f457) "No interest is applied for the first 30 days for any existing plans."
   -> Applies to all plans before the per-plan rule. Existing code: `days > 30`. Day 30 earns nothing, day 31 earns.
 
 ## 4. Refactoring constraints
@@ -74,7 +74,7 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
 
 ## Important guidelines
 
-- [ ] R25 "The existing TimeDepositCalculator.updateBalance method is functioning correctly."
+- [x] R25 (d50f457) "The existing TimeDepositCalculator.updateBalance method is functioning correctly."
   -> Its current behaviour IS the spec, including boundaries and rounding. Where README wording is looser, the code wins.
 - [ ] R26 "Ensure its behavior remains unchanged after refactoring."
   -> Characterization tests written against the ORIGINAL code before touching it, kept green after every refactoring step.

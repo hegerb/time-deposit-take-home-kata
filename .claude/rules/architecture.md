@@ -4,7 +4,7 @@
 
 | Package | Owns | May import |
 |---|---|---|
-| `org.ikigaidigital` (root) | The shared `TimeDeposit` and `TimeDepositCalculator` as given | JDK only |
+| `org.ikigaidigital` (root) | The shared `TimeDeposit` and `TimeDepositCalculator` as given | JDK, domain (the calculator delegates to policies; `TimeDeposit` cannot move because of R17, so root and domain reference each other) |
 | `domain` | Business rules: interest policies, `Withdrawal`, read models | JDK, root package |
 | `application` | Use cases (inbound ports), outbound ports, application services | JDK, domain, root |
 | `adapter.in.rest` | Controller implementing the generated API interface, response mapping | application, generated API, Spring Web |
@@ -31,6 +31,6 @@ Rules:
 
 ## Extensibility rule for interest calculation
 
-Adding a plan type means adding one `InterestPolicy` class and registering it. No existing
-class changes. The common 30-day rule stays in the calculator because the README states it
+Adding a plan type means adding one `InterestPolicy` class and one line in the registry's
+`standard()` list. No other existing class changes. The common 30-day rule stays in the calculator because the README states it
 for all plans; per-plan thresholds stay inside the plan's policy.
