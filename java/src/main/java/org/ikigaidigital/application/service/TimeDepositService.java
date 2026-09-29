@@ -26,13 +26,15 @@ public class TimeDepositService implements GetAllTimeDepositsUseCase, UpdateAllB
 
     @Override
     public List<TimeDepositWithWithdrawals> updateAllBalances() {
-        List<TimeDepositWithWithdrawals> all = repository.findAll();
-        List<TimeDeposit> timeDeposits = all.stream()
+        List<TimeDepositWithWithdrawals> timeDepositsWithWithdrawals = repository.findAll();
+        List<TimeDeposit> timeDeposits = timeDepositsWithWithdrawals.stream()
                 .map(TimeDepositWithWithdrawals::timeDeposit)
                 .toList();
-        // updateBalance changes the deposits in place, so the list read above already carries the new balances
+        // A6: withdrawals do not reach the calculator, which the README declares correct without them.
+        // A4: days stay as stored, the README asks to update balances only.
+        // updateBalance changes the deposits in place, so the list read above already carries the new balances.
         calculator.updateBalance(timeDeposits);
         repository.saveBalances(timeDeposits);
-        return all;
+        return timeDepositsWithWithdrawals;
     }
 }

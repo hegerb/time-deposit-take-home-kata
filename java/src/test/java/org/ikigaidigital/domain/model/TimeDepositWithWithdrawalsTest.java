@@ -16,11 +16,11 @@ class TimeDepositWithWithdrawalsTest {
     void should_keepItsOwnWithdrawals_whenTheSourceListChangesAfterwards() {
         List<Withdrawal> source = new ArrayList<>();
         source.add(new Withdrawal(1, new BigDecimal("10.00"), LocalDate.of(2024, 1, 1)));
-        TimeDepositWithWithdrawals timeDeposit =
+        TimeDepositWithWithdrawals timeDepositWithWithdrawals =
                 new TimeDepositWithWithdrawals(new TimeDeposit(1, PlanTypes.BASIC, 100.00, 31), source);
 
         source.clear();
 
-        assertThat(timeDeposit.withdrawals()).hasSize(1);
+        assertThat(timeDepositWithWithdrawals.withdrawals()).hasSize(1);
     }
 }
