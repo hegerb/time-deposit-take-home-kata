@@ -49,14 +49,14 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
 
 ## 4. Refactoring constraints
 
-- [ ] R17 "Do not introduce breaking changes to the shared TimeDeposit class or modify the updateBalance method signature."
+- [x] R17 (7aef83b) "Do not introduce breaking changes to the shared TimeDeposit class or modify the updateBalance method signature."
   -> `TimeDeposit`: constructor, getters, `setBalance`, field types and mutability stay. `TimeDepositCalculator.updateBalance(List<TimeDeposit>)`: same name, parameter, return type, package. Anything needing more data (withdrawals) lives outside this class.
-- [ ] R18 "Ensure the design is extensible to accommodate future complexities in interest calculations."
+- [x] R18 (7aef83b) "Ensure the design is extensible to accommodate future complexities in interest calculations."
   -> Adding a new plan or rule must not require editing an if-chain. Strategy per plan type, selected by plan type. This is the core refactoring the reviewer looks at.
 
 ## 5. Code quality
 
-- [ ] R19 "Adhere to SOLID principles, design patterns, and clean code practices where applicable."
+- [x] R19 (7aef83b) "Adhere to SOLID principles, design patterns, and clean code practices where applicable."
   -> SRP per class, open/closed via strategies, DIP via ports. Clean code: no dead code, no unused imports, no redundant comments, domain naming. "Where applicable" means no pattern for its own sake.
 
 ## 6. AI-assisted development
@@ -76,7 +76,7 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
 
 - [x] R25 (d50f457) "The existing TimeDepositCalculator.updateBalance method is functioning correctly."
   -> Its current behaviour IS the spec, including boundaries and rounding. Where README wording is looser, the code wins.
-- [ ] R26 "Ensure its behavior remains unchanged after refactoring."
+- [x] R26 (7aef83b) "Ensure its behavior remains unchanged after refactoring."
   -> Characterization tests written against the ORIGINAL code before touching it, kept green after every refactoring step.
 - [ ] R27 "The final solution must include exactly two API endpoints."
   -> Count of routes in the OpenAPI contract is two. Swagger UI is documentation, not an API endpoint (assumption to state).
