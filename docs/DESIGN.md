@@ -38,7 +38,7 @@ org.ikigaidigital
   domain
     interest/  InterestPolicy, BasicInterestPolicy, StudentInterestPolicy, PremiumInterestPolicy,
                InterestPolicies (lookup by plan type, unknown -> no interest, R31)
-    model/     Withdrawal (record), TimeDepositWithWithdrawals (record: deposit + withdrawals)
+    model/     PlanTypes (plan type codes), Withdrawal (record), TimeDepositWithWithdrawals (record)
   application
     port/in    UpdateAllBalancesUseCase, GetAllTimeDepositsUseCase
     port/out   TimeDepositRepository (findAll, saveBalances)
@@ -139,7 +139,7 @@ Each commit builds, tests pass, message is imperative and cites checklist ids.
 |---|---|---|
 | 1 | Set up AI harness and README requirements checklist | R20, R22, R23 |
 | 2 | Add design document with commit plan | R18 (design), R33 (assumptions listed) |
-| 3 | Add characterization tests for TimeDepositCalculator | R25, R26, R13..R16, A9 |
+| 3 | Add characterization tests and plan type constants (`PlanTypes`, used by calculator and tests) | R25, R26, R13..R16, A9 |
 | 4 | Extract interest policy per plan type | R18, R19, R17 verified |
 | 5 | Add withdrawal model, ports and application service (core complete, framework-free) | R35, R07, A4, A6 |
 | 6 | Add Spring Boot application skeleton | R32 |
@@ -151,7 +151,7 @@ Each commit builds, tests pass, message is imperative and cites checklist ids.
 | 12 | Document how to run and trigger the endpoints | R39, E03, A10 |
 | 13 | Document AI-assisted development | R21, R24, R38 |
 
-Hexagonal build-up: domain package appears in 4 (policies need a home), ports and application
+Hexagonal build-up: domain package appears in 3 (`PlanTypes` needs a home), ports and application
 service in 5 (core complete and unit-tested with no framework), adapters in 8 and 10 plug into
 existing ports. Nothing is moved without a change that needs it.
 
