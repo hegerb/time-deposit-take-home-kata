@@ -65,9 +65,9 @@ Status: [ ] open · [x] done, verified, with commit hash. Re-run before every co
   -> Claude Code with a committed project config, used from the first commit to the last. Evidence should be visible in the repo.
 - [ ] R21 "Briefly document the tools and setup used (e.g., LLMs, coding assistants, agentic frameworks, configuration)."
   -> A short section in the README or a dedicated doc: model, CLI version, config files, how they are wired.
-- [ ] R22 "Ensure your AI setup is practical and reproducible."
+- [x] R22 (21ef897) "Ensure your AI setup is practical and reproducible."
   -> Someone cloning the repo can run the same setup. Config lives in the repo.
-- [ ] R23 "Include any custom rules, system prompts, or agent configurations used."
+- [x] R23 (21ef897) "Include any custom rules, system prompts, or agent configurations used."
   -> Commit CLAUDE.md, rules and this checklist. Only the rules that shaped this solution, nothing external.
 - [ ] R24 "Include a brief summary of which parts of the solution were AI-assisted and why."
   -> Honest per-area summary: what AI drafted, what was reviewed and changed by the developer, and the reason for using AI there.
