@@ -34,3 +34,20 @@ Rules:
 Adding a plan type means adding one `InterestPolicy` class and one line in the registry's
 `standard()` list. No other existing class changes. The common 30-day rule stays in the calculator because the README states it
 for all plans; per-plan thresholds stay inside the plan's policy.
+
+## When to extract the domain into its own module
+
+Keep one Maven module while there is one deployable. Enforce the layering with the
+architecture test, not with module boundaries.
+
+Extract `org.ikigaidigital` (root, `domain`, `application`) into a separate module the
+moment any of these is true:
+- a second deployable needs the domain: another service, a batch job, a CLI, a test
+  harness that must not start Spring;
+- the domain has to be versioned or released on its own schedule;
+- a different team owns the adapters.
+
+Not a reason: size, taste, or that it "looks more hexagonal". The split is mechanical
+when the trigger comes: move the three packages, add a parent pom, the tests move with
+their packages, nothing in the code changes.
+

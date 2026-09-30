@@ -49,7 +49,7 @@ Needs Docker: the persistence and end-to-end tests run against PostgreSQL in Tes
 | `adapter.out.persistence` | JPA entities and the repository port implementation |
 | `config` | bean wiring |
 
-`domain` and `application` import nothing from Spring, JPA or generated code.
+`domain` and `application` import nothing from Spring, JPA or generated code; `HexagonalArchitectureTest` fails the build if that changes.
 
 ## Assumptions
 

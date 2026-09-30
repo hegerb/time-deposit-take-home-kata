@@ -50,6 +50,10 @@ org.ikigaidigital
   TimeDepositApplication  Spring Boot main
 ```
 
+Single module on purpose: one deployable. Layering is enforced by an ArchUnit test
+(`HexagonalArchitectureTest`); the architecture rule file states when the domain becomes
+its own module.
+
 Rules that make it hexagonal:
 - `domain` and `application` import nothing from Spring, JPA or generated API code.
 - Ports are interfaces owned by `application`; adapters depend on ports, never the reverse.
