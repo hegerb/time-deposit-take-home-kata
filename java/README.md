@@ -11,6 +11,8 @@ cd java
 mvn spring-boot:run
 ```
 
+From an IDE, run `TimeDepositApplication` with the working directory set to `java`, where `docker-compose.yml` lives.
+
 Swagger UI: http://localhost:8080/swagger-ui.html (serves the contract `src/main/resources/static/openapi.yaml`).
 
 ## Trigger the endpoints in Swagger UI
