@@ -24,6 +24,11 @@ Detailed conventions live in `.claude/rules/` and are loaded with this file.
 - No input validation or exception handling. It is explicitly not required.
 - Ambiguities get a stated assumption in a code comment at the place of the decision.
 
+## Command
+
+- `/task <what to build>`: plans against the README and the design, implements with tests,
+  stops before the commit. Defined in `.claude/commands/task.md`.
+
 ## Rule files
 
 - `.claude/rules/architecture.md`: hexagonal layout, dependency direction, what is a port.

@@ -7,6 +7,7 @@
 | Coding assistant | Claude Code (Anthropic's CLI agent), Claude model, run in the terminal in this repository |
 | Project instructions | `CLAUDE.md` at the repo root, loaded automatically by Claude Code |
 | Rules | `.claude/rules/*.md`: architecture, Java style, testing, API and persistence, git; loaded with `CLAUDE.md` |
+| Command | `.claude/commands/task.md`: `/task <what to build>` runs the project's own sequence for a change: read README, checklist and design, list the files in touch order, implement, test once, stop before the commit |
 | Permissions | `.claude/settings.json`: the agent may run Maven and read-only git, may stage and commit only on request, may never push |
 | Working documents | `docs/REQUIREMENTS-CHECKLIST.md` (README traced sentence by sentence), `docs/DESIGN.md` (architecture, decisions, commit plan) |
 
